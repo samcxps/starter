@@ -48,7 +48,11 @@ In `packages/infra/src/util.ts`, modify the `createApp()` function to use the pr
 
 ```
 ...
-profile: "default" // change me
+const app = await alchemy(appName, {
+    profile: "default", // change me, if you want!
+    password: process.env.ALCHEMY_SECRET_PASSWORD,
+    stateStore: (scope) => getSharedStateStore(scope),
+});
 ...
 ```
 

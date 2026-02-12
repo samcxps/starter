@@ -6,7 +6,7 @@ Starting point for new projects
 
 ### Create .env files
 
-1. Create `.env.alchemy` for alchemy specific environment variables and set the values.
+1. Create `.env.alchemy` for alchemy specific environment variables.
 ```
 touch .env.alchemy
 ```
@@ -18,21 +18,18 @@ ALCHEMY_STATE_TOKEN="xyz-123"
 ALCHEMY_SECRET_PASSWORD="xyz-123"
 ```
 
-2. Create `.env` file for every stage (including local)
+2. Create `.env.${stage}` file for every stage you plan to run app in (including local - which will be the output of the `whoami` command). These files will be used for environment variables your application(s) need access to.
 ```
 touch .env.$(whoami)
 touch .env.staging
 touch .env.production
 ```
 
-```
-# Stuff your apps will need
-DATABASE_URL="xyz-123"
-MY_SUPER_SECRET_THING="xyz-123"
-```
 
-### Create deploy scripts
-Edit `packages/infra/package.json` to include scripts for deploy/destroying stages. Make sure to switch out the app name.
+### Modify @repo/infra to add deploy scripts
+Edit `packages/infra/package.json` to include scripts for deploy/destroying stages. Make sure to replace {APP_NAME_HERE} with your "base" app name. 
+
+I like to make this whatever the `name` is in my root `package.json`
 
 ```
 "scripts": {

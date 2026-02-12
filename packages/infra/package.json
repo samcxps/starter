@@ -1,0 +1,21 @@
+{
+  "name": "@repo/infra",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "deploy:staging": "NODE_ENV=production alchemy deploy --app APP_NAME_HERE --stage staging",
+    "deploy:production": "NODE_ENV=production alchemy deploy --app APP_NAME_HERE --stage production",
+    "destroy:staging": "alchemy destroy --app APP_NAME_HERE --stage staging",
+    "destroy:production": "alchemy destroy --app APP_NAME_HERE --stage production",
+    "dev": "alchemy dev"
+  },
+  "devDependencies": {
+    "alchemy": "catalog:",
+    "dotenv": "catalog:",
+    "@repo/config": "workspace:*"
+  },
+  "exports": {
+    "./util": "./src/util.ts",
+    "./alchemy.run": "./alchemy.run.ts"
+  }
+}

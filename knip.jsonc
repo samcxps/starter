@@ -1,0 +1,10 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "tags": ["-lintignore"],
+  "workspaces": {
+    ".": {}
+  },
+
+  // Ignore files need to be entries into the project, not just files to ignore completely
+  "ignore": ["turbo/generators/config.ts"]
+}

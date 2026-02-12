@@ -5,6 +5,22 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "deploy:staging": {
+      "cache": false,
+      "persistent": true
+    },
+    "destroy:staging": {
+      "cache": false,
+      "persistent": true
+    },
+    "deploy:production": {
+      "cache": false,
+      "persistent": true
+    },
+    "destroy:production": {
+      "cache": false,
+      "persistent": true
     }
   }
 }

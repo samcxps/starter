@@ -20,7 +20,8 @@
     "knip": "^5.83.1",
     "lefthook": "^2.1.1",
     "turbo": "^2.8.7",
-    "ultracite": "7.1.5"
+    "ultracite": "7.1.5",
+    "alchemy": "catalog:"
   },
   "peerDependencies": {
     "typescript": "^5.9.3"

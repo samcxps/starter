@@ -41,6 +41,16 @@ The "base" app name is up to you. I prefer to match this with whatever the `name
 }
 ```
 
+### Optional: Specify your Alchemy profile
+If you have multiple Cloudflare accounts, configure a new profile in alchemy and make sure to configure the app to use said profile
+
+In `packages/infra/src/util.ts`, modify the `createApp()` function to use the profile you want.
+
+```
+...
+profile: "default" // change me
+...
+```
 
 ### Creating new packages
 `bun turbo gen`

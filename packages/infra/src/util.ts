@@ -47,8 +47,9 @@ export async function createApp(appName: string) {
 
   // Create new app scope for this app
   const app = await alchemy(appName, {
+    profile: "default", // change me if you have multiple profiles
     password: process.env.ALCHEMY_SECRET_PASSWORD,
-    // stateStore: (scope) => getSharedStateStore(scope),
+    stateStore: (scope) => getSharedStateStore(scope),
   });
 
   // Load env based on stage

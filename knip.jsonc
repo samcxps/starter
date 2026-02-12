@@ -6,5 +6,15 @@
   },
 
   // Ignore files need to be entries into the project, not just files to ignore completely
-  "ignore": ["turbo/generators/config.ts"]
+  "ignore": ["turbo/generators/config.ts"],
+
+  // Ignore dependencies that are not imported in the traditional sense, but are still used as either
+  // peer dependencies, in tsconfig.json, etc.
+  "ignoreDependencies": [
+    "@repo/config",
+    "@turbo/gen",
+    "@tsconfig/node24",
+    "@cloudflare/workers-types",
+    "@biomejs/biome"
+  ]
 }

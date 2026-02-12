@@ -1,7 +1,6 @@
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import alchemy, { type Scope } from "alchemy";
-import { Hyperdrive, type HyperdriveCaching } from "alchemy/cloudflare";
 import { CloudflareStateStore } from "alchemy/state";
 import { config } from "dotenv";
 
@@ -27,7 +26,14 @@ function findRootDir(cwd: string) {
   return findRootDir(join(cwd, ".."));
 }
 
-export const APP_NAME = findRootDir(process.cwd());
+export function getAppName(entryCwd?: string) {
+  const cwd = entryCwd ?? process.cwd();
+  const packageJson = readFileSync(join(cwd, "package.json"), "utf8");
+  const packageJsonObj = JSON.parse(packageJson);
+  return packageJsonObj.name;
+}
+
+export const BASE_APP_NAME = getAppName(findRootDir(process.cwd()));
 
 /**
  * Create a new app scope and load the env files for the given stage
@@ -42,7 +48,7 @@ export async function createApp(appName: string) {
   // Create new app scope for this app
   const app = await alchemy(appName, {
     password: process.env.ALCHEMY_SECRET_PASSWORD,
-    stateStore: (scope) => getSharedStateStore(scope),
+    // stateStore: (scope) => getSharedStateStore(scope),
   });
 
   // Load env based on stage
@@ -59,7 +65,7 @@ export async function createApp(appName: string) {
  */
 export function getSharedStateStore(scope: Scope) {
   return new CloudflareStateStore(scope, {
-    scriptName: `${APP_NAME}-alchemy-state`,
+    scriptName: `${BASE_APP_NAME}-alchemy-state`,
   });
 }
 
@@ -70,7 +76,7 @@ export function getSharedStateStore(scope: Scope) {
  * @returns The normalized name of the resource
  */
 export function createResourceName(name: string) {
-  return `${APP_NAME}-${name}`;
+  return `${BASE_APP_NAME}-${name}`;
 }
 
 /**
@@ -81,7 +87,7 @@ export function loadAlchemyEnv() {
   const path = join(cwd, ".env.alchemy");
 
   if (existsSync(path)) {
-    config({ path });
+    config({ path, quiet: true });
   } else {
     throw new Error(`${path} file not found`);
   }
@@ -95,28 +101,8 @@ export function loadEnvForStage(stage: string) {
   const path = join(cwd, `.env.${stage}`);
 
   if (existsSync(path)) {
-    config({ path });
+    config({ path, quiet: true });
   } else {
     throw new Error(`${path} file not found`);
   }
-}
-/**
- * Create a new Hyperdrive instance
- *
- * @param name - The name of the resource
- * @param caching - The caching configuration for the Hyperdrive instance
- * @returns The Hyperdrive instance
- */
-export async function createHyperdrive(
-  name: string,
-  connectionString: string,
-  caching: HyperdriveCaching = {}
-) {
-  return await Hyperdrive(name, {
-    origin: alchemy.secret(connectionString),
-    dev: {
-      origin: alchemy.secret(connectionString),
-    },
-    caching,
-  });
 }

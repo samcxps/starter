@@ -1,0 +1,15 @@
+{
+  "name": "api",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "alchemy dev"
+  },
+  "dependencies": {
+    "@repo/infra": "workspace:*",
+    "alchemy": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/config": "workspace:"
+  }
+}

@@ -5,10 +5,10 @@
   "dependencies": {
     "zod": "catalog:",
     "@t3-oss/env-core": "catalog:",
-    "@repo/infra": "workspace:*"
+    "@repo/infra": "workspace:"
   },
   "devDependencies": {
-    "@repo/config": "workspace:*"
+    "@repo/config": "workspace:"
   },
   "exports": {
     ".": "./src/index.ts",

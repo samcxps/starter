@@ -10,7 +10,7 @@
     "destroy:production": "alchemy destroy --app api --stage production"
   },
   "dependencies": {
-    "@repo/infra": "workspace:*",
+    "@repo/infra": "workspace:",
     "alchemy": "catalog:"
   },
   "devDependencies": {

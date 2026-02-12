@@ -8,7 +8,7 @@
   "devDependencies": {
     "alchemy": "catalog:",
     "dotenv": "catalog:",
-    "@repo/config": "workspace:*"
+    "@repo/config": "workspace:"
   },
   "exports": {
     "./util": "./src/util.ts",

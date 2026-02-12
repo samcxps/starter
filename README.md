@@ -26,10 +26,10 @@ touch .env.production
 ```
 
 
-### Modify @repo/infra to add deploy scripts
-Edit `packages/infra/package.json` to include scripts for deploy/destroying stages. Make sure to replace {APP_NAME_HERE} with your "base" app name. 
+### Modify `@repo/infra` to add deploy scripts
+Edit `packages/infra/package.json` to include scripts for deploying/destroying your stages. Make sure to replace {APP_NAME_HERE} with your "base" app name. 
 
-I like to make this whatever the `name` is in my root `package.json`
+The "base" app name is up to you. I prefer to match this with whatever the `name` is in my root `package.json`
 
 ```
 "scripts": {

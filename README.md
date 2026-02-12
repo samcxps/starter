@@ -34,8 +34,8 @@ The "base" app name is up to you. I prefer to match this with whatever the `name
 ```
 "scripts": {
     ...
-    "deploy:staging": "NODE_ENV=production alchemy deploy --app {APP_NAME_HERE} --stage staging",
-    "deploy:production": "NODE_ENV=production alchemy deploy --app {APP_NAME_HERE} --stage production",
+    "deploy:staging": "alchemy deploy --app {APP_NAME_HERE} --stage staging",
+    "deploy:production": "alchemy deploy --app {APP_NAME_HERE} --stage production",
     "destroy:staging": "alchemy destroy --app {APP_NAME_HERE} --stage staging",
     "destroy:production": "alchemy destroy --app {APP_NAME_HERE} --stage production",
 }

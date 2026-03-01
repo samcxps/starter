@@ -11,16 +11,7 @@ const app = await createApp("api");
 export const worker = await Worker("worker", {
   name: createResourceName("worker"),
   entrypoint: join(import.meta.dirname, "src", "index.ts"),
-  //   compatibility: "node",
-  //   url: false,
-  //   placement: {
-  //     mode: "smart",
-  //   },
-  //   domains: [
-  //     {
-  //       domainName: `${app.stage}.api.my-cool-domain.com`,
-  //     },
-  //   ],
+  compatibility: "node",
   bindings: {
     STAGE: app.stage,
   },

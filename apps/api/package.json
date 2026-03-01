@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "alchemy dev",
+    "dev": "alchemy dev --app api",
     "deploy:staging": "alchemy deploy --app api --stage staging",
     "deploy:production": "alchemy deploy --app api --stage production",
     "destroy:staging": "alchemy destroy --app api --stage staging",

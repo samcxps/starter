@@ -26,16 +26,18 @@ touch .env.production
 ```
 
 
-### Modify `@repo/infra` to add deploy scripts
-Edit `packages/infra/package.json` to include scripts for deploying/destroying your stages. Make sure to replace {APP_NAME_HERE} with your "base" app name. 
+### Modify all apps and infra package.json to include deploy and/or dev scripts
+Any app (or infra) that has an alchemy.run.ts file should also contain scripts for deploy, destroy, and dev.
 
 The "base" app name is up to you. I prefer to match this with whatever the `name` is in my root `package.json`
 
 ```
 "scripts": {
     ...
+    "dev": "alchemy dev --app {APP_NAME_HERE}",
     "deploy:staging": "alchemy deploy --app {APP_NAME_HERE} --stage staging",
     "deploy:production": "alchemy deploy --app {APP_NAME_HERE} --stage production",
+    "deploy:another-cool-stage": "alchemy deploy --app {APP_NAME_HERE} --stage another-cool-stage",
     "destroy:staging": "alchemy destroy --app {APP_NAME_HERE} --stage staging",
     "destroy:production": "alchemy destroy --app {APP_NAME_HERE} --stage production",
 }

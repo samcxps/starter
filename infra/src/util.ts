@@ -51,7 +51,7 @@ export async function createApp(appName: string) {
   const app = await alchemy(appName, {
     adopt: true,
     rootDir: findRootDir(process.cwd()),
-    profile: "default", // change me if you have multiple profiles
+    profile: "samsonc99", // change me if you have multiple profiles
     password: process.env.ALCHEMY_SECRET_PASSWORD,
     stateStore: (scope) =>
       new CloudflareStateStore(scope, {

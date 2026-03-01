@@ -1,0 +1,19 @@
+{
+  "name": "{{name}}",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "alchemy dev --app {{name}}",
+    "deploy:staging": "alchemy deploy --app api --stage staging",
+    "deploy:production": "alchemy deploy --app {{name}} --stage production",
+    "destroy:staging": "alchemy destroy --app {{name}} --stage staging",
+    "destroy:production": "alchemy destroy --app {{name}} --stage production"
+  },
+  "dependencies": {
+    "infra": "workspace:",
+    "alchemy": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/config": "workspace:"
+  }
+}

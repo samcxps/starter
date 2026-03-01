@@ -1,9 +1,9 @@
 import { join } from "node:path";
-import { Worker } from "alchemy/cloudflare";
 import { createApp, createResourceName } from "infra/util";
+import { Worker } from "alchemy/cloudflare";
 
 // Create a root app for shared infra and resources
-const app = await createApp("api");
+const app = await createApp("{{name}}");
 
 /**
  * @see https://alchemy.run/providers/cloudflare/worker/

@@ -33,6 +33,17 @@
         "@repo/config": "workspace:",
       },
     },
+    "apps/publisher": {
+      "name": "publisher",
+      "version": "0.0.0",
+      "dependencies": {
+        "alchemy": "catalog:",
+        "infra": "workspace:",
+      },
+      "devDependencies": {
+        "@repo/config": "workspace:",
+      },
+    },
     "infra": {
       "name": "infra",
       "version": "0.0.0",
@@ -876,6 +887,8 @@
     "process-nextick-args": ["process-nextick-args@2.0.1", "", {}, "sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag=="],
 
     "proper-lockfile": ["proper-lockfile@4.1.2", "", { "dependencies": { "graceful-fs": "^4.2.4", "retry": "^0.12.0", "signal-exit": "^3.0.2" } }, "sha512-TjNPblN4BwAWMXU8s9AEz4JmQxnD1NNL7bNOY/AKUzyamc379FWASUhc/K1pL2noVb+XmZKLL68cjzLsiOAMaA=="],
+
+    "publisher": ["publisher@workspace:apps/publisher"],
 
     "queue-microtask": ["queue-microtask@1.2.3", "", {}, "sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A=="],
 

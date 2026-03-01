@@ -11,17 +11,18 @@
     "knip": "knip"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.13",
-    "@cloudflare/workers-types": "^4.20260212.0",
+    "@biomejs/biome": "2.4.4",
+    "@cloudflare/workers-types": "^4.20260301.1",
     "@tsconfig/node24": "^24.0.4",
-    "@turbo/gen": "^2.8.7",
+    "@turbo/gen": "^2.8.12",
     "@types/bun": "^1.3.9",
-    "@types/node": "^25.2.3",
-    "knip": "^5.83.1",
+    "@types/node": "^25.3.3",
+    "alchemy": "catalog:",
+    "knip": "^5.85.0",
     "lefthook": "^2.1.1",
-    "turbo": "^2.8.7",
-    "ultracite": "7.1.5",
-    "alchemy": "catalog:"
+    "turbo": "^2.8.12",
+    "ultracite": "7.2.4",
+    "@repo/config": "workspace:"
   },
   "peerDependencies": {
     "typescript": "^5.9.3"
@@ -29,12 +30,13 @@
   "catalog": {
     "@t3-oss/env-core": "^0.13.10",
     "zod": "^4.3.6",
-    "alchemy": "^0.84.0",
-    "dotenv": "^17.2.4"
+    "alchemy": "^0.87.0",
+    "dotenv": "^17.3.1"
   },
-  "packageManager": "bun@1.3.8",
+  "packageManager": "bun@1.3.10",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "infra"
   ]
 }

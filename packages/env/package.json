@@ -5,7 +5,7 @@
   "dependencies": {
     "zod": "catalog:",
     "@t3-oss/env-core": "catalog:",
-    "@repo/infra": "workspace:"
+    "infra": "workspace:"
   },
   "devDependencies": {
     "@repo/config": "workspace:"

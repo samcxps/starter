@@ -1,13 +1,8 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import alchemy, { type Scope } from "alchemy";
+import alchemy from "alchemy";
 import { CloudflareStateStore } from "alchemy/state";
 import { config } from "dotenv";
-
-export const KNOWN_STAGES = {
-  staging: "staging",
-  production: "production",
-} as const;
 
 /**
  * Helper fn to find the root directory of the project by looking
@@ -26,14 +21,19 @@ function findRootDir(cwd: string) {
   return findRootDir(join(cwd, ".."));
 }
 
-export function getAppName(entryCwd?: string) {
+/**
+ * Helper fn to get the app name from the package.json file
+ *
+ * @param entryCwd - The current working directory
+ * @returns The app name
+ */
+export function getPackageJsonName(entryCwd?: string) {
   const cwd = entryCwd ?? process.cwd();
+
   const packageJson = readFileSync(join(cwd, "package.json"), "utf8");
   const packageJsonObj = JSON.parse(packageJson);
   return packageJsonObj.name;
 }
-
-export const BASE_APP_NAME = getAppName(findRootDir(process.cwd()));
 
 /**
  * Create a new app scope and load the env files for the given stage
@@ -45,11 +45,18 @@ export async function createApp(appName: string) {
   // Load shared env required by alchemy
   loadAlchemyEnv();
 
+  const baseAppName = getPackageJsonName(findRootDir(process.cwd()));
+
   // Create new app scope for this app
   const app = await alchemy(appName, {
+    adopt: true,
+    rootDir: findRootDir(process.cwd()),
     profile: "default", // change me if you have multiple profiles
     password: process.env.ALCHEMY_SECRET_PASSWORD,
-    stateStore: (scope) => getSharedStateStore(scope),
+    stateStore: (scope) =>
+      new CloudflareStateStore(scope, {
+        scriptName: `${baseAppName}-alchemy-state`,
+      }),
   });
 
   // Load env based on stage
@@ -59,25 +66,14 @@ export async function createApp(appName: string) {
 }
 
 /**
- * Get shared state store for this app
- *
- * @param scope - The scope of the app
- * @returns The shared state store
- */
-export function getSharedStateStore(scope: Scope) {
-  return new CloudflareStateStore(scope, {
-    scriptName: `${BASE_APP_NAME}-alchemy-state`,
-  });
-}
-
-/**
  * Helper fn to create a normalized resource name
  *
  * @param name - The name of the resource
  * @returns The normalized name of the resource
  */
 export function createResourceName(name: string) {
-  return `${BASE_APP_NAME}-${name}`;
+  const baseAppName = getPackageJsonName(findRootDir(process.cwd()));
+  return `${baseAppName}-${name}`;
 }
 
 /**

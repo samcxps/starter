@@ -1,6 +1,10 @@
-import { KNOWN_STAGES } from "@repo/infra/util";
 import { createEnv } from "@t3-oss/env-core";
 import { z } from "zod";
+
+export const KNOWN_STAGES = {
+  staging: "staging",
+  production: "production",
+} as const;
 
 // Create a schema for known stages (i.e. non-ephemeral deployed stages)
 export const KnownStageSchema = z.enum(

@@ -5,6 +5,9 @@
     "rules": {
       "style": {
         "noNamespace": "off"
+      },
+      "performance": {
+        "noBarrelFile": "off"
       }
     }
   }

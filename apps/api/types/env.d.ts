@@ -1,6 +1,6 @@
-import type { worker } from "../alchemy.run";
+import type { api } from "../../../infra/workers";
 
-export type CloudflareEnv = typeof worker.Env;
+export type CloudflareEnv = typeof api.Env;
 
 declare global {
   type Env = CloudflareEnv;

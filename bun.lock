@@ -12,7 +12,8 @@
         "@turbo/gen": "^2.8.12",
         "@types/bun": "^1.3.9",
         "@types/node": "^25.3.3",
-        "alchemy": "catalog:",
+        "alchemy": "^0.87.0",
+        "dotenv": "^17.3.1",
         "knip": "^5.85.0",
         "lefthook": "^2.1.1",
         "turbo": "^2.8.12",
@@ -25,33 +26,6 @@
     "apps/api": {
       "name": "api",
       "version": "0.0.0",
-      "dependencies": {
-        "alchemy": "catalog:",
-        "infra": "workspace:",
-      },
-      "devDependencies": {
-        "@repo/config": "workspace:",
-      },
-    },
-    "apps/publisher": {
-      "name": "publisher",
-      "version": "0.0.0",
-      "dependencies": {
-        "alchemy": "catalog:",
-        "infra": "workspace:",
-      },
-      "devDependencies": {
-        "@repo/config": "workspace:",
-      },
-    },
-    "infra": {
-      "name": "infra",
-      "version": "0.0.0",
-      "devDependencies": {
-        "@repo/config": "workspace:",
-        "alchemy": "catalog:",
-        "dotenv": "catalog:",
-      },
     },
     "packages/config": {
       "name": "@repo/config",
@@ -79,8 +53,6 @@
   },
   "catalog": {
     "@t3-oss/env-core": "^0.13.10",
-    "alchemy": "^0.87.0",
-    "dotenv": "^17.3.1",
     "zod": "^4.3.6",
   },
   "packages": {
@@ -710,7 +682,7 @@
 
     "inflight": ["inflight@1.0.6", "", { "dependencies": { "once": "^1.3.0", "wrappy": "1" } }, "sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA=="],
 
-    "infra": ["infra@workspace:infra"],
+    "infra": ["@repo/env@workspace:packages/env"],
 
     "inherits": ["inherits@2.0.4", "", {}, "sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ=="],
 
@@ -887,8 +859,6 @@
     "process-nextick-args": ["process-nextick-args@2.0.1", "", {}, "sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag=="],
 
     "proper-lockfile": ["proper-lockfile@4.1.2", "", { "dependencies": { "graceful-fs": "^4.2.4", "retry": "^0.12.0", "signal-exit": "^3.0.2" } }, "sha512-TjNPblN4BwAWMXU8s9AEz4JmQxnD1NNL7bNOY/AKUzyamc379FWASUhc/K1pL2noVb+XmZKLL68cjzLsiOAMaA=="],
-
-    "publisher": ["publisher@workspace:apps/publisher"],
 
     "queue-microtask": ["queue-microtask@1.2.3", "", {}, "sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A=="],
 

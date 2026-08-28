@@ -13,7 +13,7 @@
   "ignoreDependencies": [
     "@repo/config",
     "@turbo/gen",
-    "@tsconfig/node24",
+    "@tsconfig/node26",
     "@cloudflare/workers-types",
     "@biomejs/biome"
   ]

@@ -1,17 +1,17 @@
 {
   "name": "@repo/env",
-  "private": true,
   "version": "0.0.0",
-  "dependencies": {
-    "zod": "catalog:",
-    "@t3-oss/env-core": "catalog:",
-    "infra": "workspace:"
-  },
-  "devDependencies": {
-    "@repo/config": "workspace:"
-  },
+  "private": true,
   "exports": {
     ".": "./src/index.ts",
     "./*": "./src/*.ts"
+  },
+  "dependencies": {
+    "@t3-oss/env-core": "catalog:",
+    "infra": "workspace:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/config": "workspace:"
   }
 }

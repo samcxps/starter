@@ -7,8 +7,8 @@ config({ path: ".env.alchemy", quiet: true });
 
 export const app = await alchemy("starter", {
   adopt: true,
-  profile: "samsonc99",
   password: process.env.ALCHEMY_SECRET_PASSWORD,
+  profile: "samsonc99",
   stateStore: (scope) =>
     new CloudflareStateStore(scope, {
       scriptName: `${scope.appName}-alchemy-state`,

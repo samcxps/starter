@@ -1,12 +1,12 @@
 {
   "name": "@repo/util",
-  "private": true,
   "version": "0.0.0",
-  "devDependencies": {
-    "@repo/config": "workspace:"
-  },
+  "private": true,
   "exports": {
     ".": "./src/index.ts",
     "./*": "./src/*.ts"
+  },
+  "devDependencies": {
+    "@repo/config": "workspace:"
   }
 }
